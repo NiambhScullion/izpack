@@ -221,7 +221,7 @@ public class Unpacker extends UnpackerBase
                                     // need the creation time of the existing
                                     // file or record with which mtime
                                     // it was installed...)
-                                    overwritefile = (pathFile.lastModified() < pf.lastModified());
+                                    overwritefile = (pathFile.lastModified() < System.currentTimeMillis());
                                 }
                                 else
                                 {
@@ -358,12 +358,7 @@ public class Unpacker extends UnpackerBase
                         {
                             pis.close();
                         }
-
-                        // Set file modification time if specified
-                        if (pf.lastModified() >= 0)
-                        {
-                            pathFile.setLastModified(pf.lastModified());
-                        }
+                        
                         // Custom action listener stuff --- afterFile ----
                         informListeners(customActions, InstallerListener.AFTER_FILE, pathFile, pf,
                                 null);
