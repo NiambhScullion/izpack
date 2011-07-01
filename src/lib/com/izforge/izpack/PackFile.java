@@ -80,12 +80,7 @@ public class PackFile implements Serializable
      */
     private transient long size = 0;
 
-    /**
-     * The last-modification time of the file.
-     */
-    private long mtime = -1;
-
-    /**
+       /**
      * True if file is a directory (length should be 0 or ignored)
      */
     private boolean isDirectory = false;
@@ -167,7 +162,6 @@ public class PackFile implements Serializable
 
         this.length = src.length();
         this.size = this.length;
-        this.mtime = src.lastModified();
         this.isDirectory = src.isDirectory();
         this.additionals = additionals;
         
@@ -254,15 +248,7 @@ public class PackFile implements Serializable
     	return size;
     }
     
-    /**
-     * The last-modification time of the file.
-     */
-    public final long lastModified()
-    {
-        return mtime;
-    }
-
-    /**
+        /**
      * Whether or not this file is going to override any existing ones
      */
     public final int override()
